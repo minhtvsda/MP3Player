@@ -81,7 +81,7 @@ class MusicService : Service() {
 
             }
 
-        return super.onStartCommand(intent, flags, startId)
+        return START_REDELIVER_INTENT
     }
 
 
@@ -164,7 +164,7 @@ class MusicService : Service() {
 
         intent.putExtras(bundle)
 
-        //su dung broadcast receiver trong localbroadcastmanager
+        //su dung broadcast receiver trong localBroadcastmanager
 
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
 

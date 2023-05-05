@@ -185,14 +185,10 @@ class MusicActivity : AppCompatActivity() {
             mediaPlayer?.pause()
             binding.buttonPlayPause.setBackgroundResource(R.drawable.baseline_play_arrow_24)
             musicService.sendNotificationMedia(filePath!!, title!!)
-
-//            sendActionToService(ACTION_PAUSE)
         }else{
             mediaPlayer?.start()
             binding.buttonPlayPause.setBackgroundResource(R.drawable.baseline_pause_24)
             musicService.sendNotificationMedia(filePath!!, title!!)
-
-//            sendActionToService(ACTION_RESUME)
         }
     }
 
