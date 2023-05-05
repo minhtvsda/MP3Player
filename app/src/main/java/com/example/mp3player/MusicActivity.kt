@@ -199,17 +199,17 @@ class MusicActivity : AppCompatActivity() {
         mediaPlayer?.reset() // if not reset app will crash
         position = if (position == 0) list.size - 1 else position - 1
 
-        val newFilePath = list[position]
+        filePath = list[position]
 
 
         stopService(intentService)
         unbindService(serviceConnection)
 
         intentService = Intent(this, MusicService::class.java)
-        val newTitle = filePath?.substring(filePath!!.lastIndexOf("/")+ 1)
+        title = filePath?.substring(filePath!!.lastIndexOf("/")+ 1)
 
-        intentService.putExtra("title", newTitle)
-        intentService.putExtra("filePath", newFilePath)
+        intentService.putExtra("title", title)
+        intentService.putExtra("filePath", filePath)
         intentService.putExtra("position", position)
         intentService.putExtra("list", list)
 
@@ -220,7 +220,7 @@ class MusicActivity : AppCompatActivity() {
         binding.textViewFileNameMusic.clearAnimation()
         binding.textViewFileNameMusic.startAnimation(animation)
         binding.buttonPlayPause.setBackgroundResource(R.drawable.baseline_pause_24)
-        binding.textViewFileNameMusic.text = newTitle
+        binding.textViewFileNameMusic.text = title
 
     }
     fun nextSong(){
@@ -228,17 +228,17 @@ class MusicActivity : AppCompatActivity() {
 
         position = if (list.size - 1 == position) 0 else position + 1
 
-        val newFilePath = list[position]
+        filePath = list[position]
 
 
         stopService(intentService)
         unbindService(serviceConnection)
 
         intentService = Intent(this, MusicService::class.java)
-        val newTitle = filePath?.substring(filePath!!.lastIndexOf("/")+ 1)
+        title = filePath?.substring(filePath!!.lastIndexOf("/")+ 1)
 
-        intentService.putExtra("title", newTitle)
-        intentService.putExtra("filePath", newFilePath)
+        intentService.putExtra("title", title)
+        intentService.putExtra("filePath", filePath)
         intentService.putExtra("position", position)
         intentService.putExtra("list", list)
 
@@ -249,7 +249,7 @@ class MusicActivity : AppCompatActivity() {
         binding.textViewFileNameMusic.clearAnimation()
         binding.textViewFileNameMusic.startAnimation(animation)
         binding.buttonPlayPause.setBackgroundResource(R.drawable.baseline_pause_24)
-        binding.textViewFileNameMusic.text = newTitle
+        binding.textViewFileNameMusic.text = title
 
     }
     fun createTimeLable(currentPosition: Int) : String{
