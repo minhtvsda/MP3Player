@@ -12,6 +12,7 @@ import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.example.mp3player.MusicService.Companion.ACTION_MUSIC
 import com.example.mp3player.databinding.ActivityMusicBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -40,7 +41,7 @@ class MusicActivity : AppCompatActivity() {
         override fun onReceive(p0: Context?, p1: Intent?) {
             val bundle = p1?.extras ?: return
             isPlaying = bundle.getBoolean("status_player")
-            val  action = bundle.getInt("action_music")
+            val action = bundle.getInt(ACTION_MUSIC)
 
             handleLayoutMusic(action)
         }
@@ -194,7 +195,7 @@ class MusicActivity : AppCompatActivity() {
 
     private fun previousSong(){
 
-        handler!!.removeCallbacks(runnable!!)
+        handler?.removeCallbacks(runnable!!)
 
         mediaPlayer?.reset() // if not reset app will crash
         position = if (position == 0) list.size - 1 else position - 1

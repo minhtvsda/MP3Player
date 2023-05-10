@@ -47,6 +47,11 @@ class MusicService : Service() {
     override fun onUnbind(intent: Intent?): Boolean {
         return super.onUnbind(intent)
     }
+
+    override fun onRebind(intent: Intent?) {
+        super.onRebind(intent)
+        Log.e("MusicService", "onRebind")
+    }
     override fun onCreate() {
         super.onCreate()
         Log.e("MusicService", "onCreate")
