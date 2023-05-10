@@ -38,7 +38,7 @@ class MusicActivity : AppCompatActivity() {
 
     private val broadcastReceiver = object : BroadcastReceiver(){
         override fun onReceive(p0: Context?, p1: Intent?) {
-            val bundle = p1!!.extras ?: return
+            val bundle = p1?.extras ?: return
             isPlaying = bundle.getBoolean("status_player")
             val  action = bundle.getInt("action_music")
 
@@ -88,7 +88,7 @@ class MusicActivity : AppCompatActivity() {
                         handler = Handler()
                         runnable = Runnable {
                             if (mediaPlayer == null){
-                                Toast.makeText(this@MusicActivity, "Media Playernull", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@MusicActivity, "Media Player null", Toast.LENGTH_SHORT).show()
                                 return@Runnable
                             } else {
                                 totalTime = mediaPlayer?.duration ?: 20
